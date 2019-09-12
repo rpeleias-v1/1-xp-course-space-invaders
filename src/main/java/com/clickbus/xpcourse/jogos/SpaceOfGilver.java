@@ -4,17 +4,30 @@ public class SpaceOfGilver implements Jogo {
 
     private static int LINE_SIZE = 5;
     private static int COLUMN_SIZE = 5;
+    private int countTick = 0;
+    int enemyLinePosition = 0;
+    int enemyColumnPosition;
 
     char[][] gameLineArray = new char[LINE_SIZE][COLUMN_SIZE];
     int shipLinePosition;
     int shipColumnPosition;
 
     public SpaceOfGilver() {
+        inicializarMatriz();
+    }
+
+    private void inicializarMatriz() {
         for (int i = 0; i < LINE_SIZE; i++) {
             for (int j = 0; j < COLUMN_SIZE; j++) {
                 gameLineArray[i][j] = ' ';
             }
         }
+
+        shipLinePosition = LINE_SIZE - 1;
+        shipColumnPosition = COLUMN_SIZE / 2;
+        gameLineArray[shipLinePosition][shipColumnPosition] = 'A';
+
+
     }
 
     public String tela() {
@@ -49,8 +62,21 @@ public class SpaceOfGilver implements Jogo {
     }
 
     public void tick() {
-        shipLinePosition = LINE_SIZE - 1;
-        shipColumnPosition = COLUMN_SIZE / 2;
-        gameLineArray[shipLinePosition][shipColumnPosition] = 'A';
+
+        ++countTick;
+
+        if(countTick == 5){
+            moveEnemy();
+        }
+
     }
+
+    public void moveEnemy(){
+
+
+            enemyColumnPosition = shipColumnPosition - 1;
+            gameLineArray[enemyLinePosition][2] = 'V';
+
+    }
+
 }

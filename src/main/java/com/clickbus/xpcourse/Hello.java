@@ -14,7 +14,7 @@ public class Hello {
                 System.out.println(line);
             }
             clearScreen();
-            Thread.sleep(1000);
+            Thread.sleep(500);
         }
     }
 

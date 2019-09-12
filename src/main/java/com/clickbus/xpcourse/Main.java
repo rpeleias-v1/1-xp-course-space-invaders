@@ -9,18 +9,21 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         Jogo jogo = new SpaceOfGilver();
+        jogo.tela();
         shipMovement(jogo);
         while (true) {
-            System.out.println("----------------------------------------------");
-            System.out.println(jogo.tela());
+            System.out.println("-----");
             jogo.tick();
+            System.out.println(jogo.tela());
             clearScreen();
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         }
     }
+
     public static void clearScreen() throws IOException {
         System.out.println("\n\n\n\n\n");
     }
+
     public static void shipMovement(final Jogo jogo) {
         JFrame frame = new JFrame();
         JButton button = new JButton();
