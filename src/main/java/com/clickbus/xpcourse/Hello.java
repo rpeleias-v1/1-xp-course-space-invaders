@@ -9,18 +9,18 @@ public class Hello {
         Space space = new Space();
         List<String> spaceLines = space.renderThreeLines();
 
-        //while (true) {
+        while (true) {
             for (String line: spaceLines) {
                 System.out.println(line);
             }
             clearScreen();
-            Thread.sleep(3000);
-
-        //}
+            Thread.sleep(1000);
+        }
     }
 
     public static void clearScreen() throws IOException {
-        Runtime.getRuntime().exec("clear");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+//        System.out.flush();
     }
 
 
