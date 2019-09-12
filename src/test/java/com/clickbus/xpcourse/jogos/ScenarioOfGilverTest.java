@@ -30,4 +30,37 @@ public class ScenarioOfGilverTest {
         jogo.tick();
         assertEquals(expected, jogo.tela());
     }
+
+    @Test
+    public void testMoveLeft() {
+        String expectedFirstMove = "";
+        expectedFirstMove += "     \n";
+        expectedFirstMove += "     \n";
+        expectedFirstMove += "     \n";
+        expectedFirstMove += "     \n";
+        expectedFirstMove += " A   \n";
+        jogo.tick();
+        jogo.esquerda();
+        assertEquals(expectedFirstMove, jogo.tela());
+
+        String expectedSecondMove = "";
+        expectedSecondMove += "     \n";
+        expectedSecondMove += "     \n";
+        expectedSecondMove += "     \n";
+        expectedSecondMove += "     \n";
+        expectedSecondMove += "A    \n";
+        jogo.tick();
+        jogo.esquerda();
+        assertEquals(expectedSecondMove, jogo.tela());
+
+        String expectedThirdMove = "";
+        expectedThirdMove += "     \n";
+        expectedThirdMove += "     \n";
+        expectedThirdMove += "     \n";
+        expectedThirdMove += "     \n";
+        expectedThirdMove += "A    \n";
+        jogo.tick();
+        jogo.esquerda();
+        assertEquals(expectedThirdMove, jogo.tela());
+    }
 }
