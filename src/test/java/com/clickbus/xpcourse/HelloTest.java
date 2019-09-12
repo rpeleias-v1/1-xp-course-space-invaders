@@ -1,8 +1,9 @@
 package com.clickbus.xpcourse;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class HelloTest {
 
@@ -15,6 +16,8 @@ public class HelloTest {
 
     @Test
     public void shoudSayHello() {
-        //Assert.assertEquals("Hel");
+        assertEquals("Hello world!", hello.greeting());
     }
+
+
 }
