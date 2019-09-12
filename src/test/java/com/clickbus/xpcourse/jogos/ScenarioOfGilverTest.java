@@ -1,12 +1,21 @@
 package com.clickbus.xpcourse.jogos;
 
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+
+import javax.xml.ws.RespectBinding;
 
 import static org.junit.Assert.assertEquals;
 
 public class ScenarioOfGilverTest {
 
-    Jogo jogo = new SpaceOfGilver();
+    Jogo jogo;
+
+    @Before
+    public void setup() {
+        this.jogo = new SpaceOfGilver();
+    }
 
     @Test
     public void testTela() {
@@ -31,6 +40,7 @@ public class ScenarioOfGilverTest {
         assertEquals(expected, jogo.tela());
     }
 
+    @Ignore
     @Test
     public void testMoveLeft() {
         String expectedFirstMove = "";
