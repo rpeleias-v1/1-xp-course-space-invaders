@@ -6,6 +6,8 @@ public class SpaceOfGilver implements Jogo {
     private static int COLUMN_SIZE = 5;
 
     char[][] gameLineArray = new char[LINE_SIZE][COLUMN_SIZE];
+    int shipLinePosition;
+    int shipColumnPosition;
 
     public SpaceOfGilver() {
         for (int i = 0; i < LINE_SIZE; i++) {
@@ -31,7 +33,11 @@ public class SpaceOfGilver implements Jogo {
     }
 
     public void esquerda() {
-
+        if (shipColumnPosition - 1 >= 0) {
+            shipColumnPosition = shipColumnPosition - 1;
+            gameLineArray[shipLinePosition][shipColumnPosition] = 'A';
+            gameLineArray[shipLinePosition][shipColumnPosition + 1] = ' ';
+        }
     }
 
     public void tiro() {
@@ -39,6 +45,8 @@ public class SpaceOfGilver implements Jogo {
     }
 
     public void tick() {
-        gameLineArray[LINE_SIZE - 1][COLUMN_SIZE / 2] = 'A';
+        shipLinePosition = LINE_SIZE - 1;
+        shipColumnPosition = COLUMN_SIZE / 2;
+        gameLineArray[shipLinePosition][shipColumnPosition] = 'A';
     }
 }
