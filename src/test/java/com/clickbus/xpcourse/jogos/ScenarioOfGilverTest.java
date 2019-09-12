@@ -1,12 +1,18 @@
 package com.clickbus.xpcourse.jogos;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class ScenarioOfGilverTest {
 
-    Jogo jogo = new SpaceOfGilver();
+    Jogo jogo;
+
+    @Before
+    public void setUp() throws Exception {
+        jogo = new SpaceOfGilver();
+    }
 
     @Test
     public void testTela() {
