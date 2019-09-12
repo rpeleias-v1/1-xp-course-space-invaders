@@ -29,7 +29,11 @@ public class SpaceOfGilver implements Jogo {
     }
 
     public void direita() {
-
+        if (shipColumnPosition + 1 < COLUMN_SIZE) {
+            shipColumnPosition = shipColumnPosition + 1;
+            gameLineArray[shipLinePosition][shipColumnPosition] = 'A';
+            gameLineArray[shipLinePosition][shipColumnPosition - 1] = ' ';
+        }
     }
 
     public void esquerda() {

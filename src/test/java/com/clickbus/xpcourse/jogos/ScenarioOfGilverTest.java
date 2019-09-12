@@ -1,7 +1,6 @@
 package com.clickbus.xpcourse.jogos;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -70,16 +69,15 @@ public class ScenarioOfGilverTest {
         assertEquals(expectedThirdMove, jogo.tela());
     }
 
-    @Ignore
     @Test
     public void testMoveRight() {
+        jogo.tick();
         String expectedFirstMove = "";
         expectedFirstMove += "     \n";
         expectedFirstMove += "     \n";
         expectedFirstMove += "     \n";
         expectedFirstMove += "     \n";
         expectedFirstMove += "   A \n";
-        jogo.tick();
         jogo.direita();
         assertEquals(expectedFirstMove, jogo.tela());
 
@@ -89,7 +87,6 @@ public class ScenarioOfGilverTest {
         expectedSecondMove += "     \n";
         expectedSecondMove += "     \n";
         expectedSecondMove += "    A\n";
-        jogo.tick();
         jogo.direita();
         assertEquals(expectedSecondMove, jogo.tela());
 
@@ -99,12 +96,10 @@ public class ScenarioOfGilverTest {
         expectedThirdMove += "     \n";
         expectedThirdMove += "     \n";
         expectedThirdMove += "    A\n";
-        jogo.tick();
         jogo.direita();
         assertEquals(expectedThirdMove, jogo.tela());
     }
 
-    @Ignore
     @Test
     public void testManyMoves() {
         String expected = "";
