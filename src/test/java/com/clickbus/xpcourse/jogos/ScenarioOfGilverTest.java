@@ -12,6 +12,9 @@ public class ScenarioOfGilverTest {
 
     @Before
     public void setup() {
+        //SpaceOfGilver novoJogo = new SpaceOfGilver();
+        //novoJogo.sementeAleatoria(0);
+        //jogo = novoJogo;
         this.jogo = new SpaceOfGilver();
     }
 
@@ -35,6 +38,8 @@ public class ScenarioOfGilverTest {
         expected += "     \n";
         expected += "     \n";
         expected += "  A  \n";
+        jogo.tick();
+        jogo.tick();
         jogo.tick();
         assertEquals(expected, jogo.tela());
     }
@@ -119,5 +124,30 @@ public class ScenarioOfGilverTest {
         jogo.esquerda();
 
         assertEquals(expected, jogo.tela());
+    }
+
+    @Ignore
+    @Test
+    public void testEnemyShowed() {
+        String expectedFirstMoment = "";
+        expectedFirstMoment += "     \n";
+        expectedFirstMoment += "     \n";
+        expectedFirstMoment += "     \n";
+        expectedFirstMoment += "     \n";
+        expectedFirstMoment += "  A  \n";
+        jogo.tick();
+        assertEquals(expectedFirstMoment, jogo.tela());
+
+        String expectedLater = "";
+        expectedLater += "  v  \n";
+        expectedLater += "     \n";
+        expectedLater += "     \n";
+        expectedLater += "     \n";
+        expectedLater += "  A  \n";
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        assertEquals(expectedLater, jogo.tela());
     }
 }
