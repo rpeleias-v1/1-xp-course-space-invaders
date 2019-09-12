@@ -39,6 +39,6 @@ public class SpaceOfGilver implements Jogo {
     }
 
     public void tick() {
-
+        gameLineArray[LINE_SIZE - 1][COLUMN_SIZE / 2] = 'A';
     }
 }

@@ -18,4 +18,16 @@ public class ScenarioOfGilverTest {
         expected += "     \n";
         assertEquals(expected, jogo.tela());
     }
+
+    @Test
+    public void testSpaceTicked() {
+        String expected = "";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "  A  \n";
+        jogo.tick();
+        assertEquals(expected, jogo.tela());
+    }
 }
