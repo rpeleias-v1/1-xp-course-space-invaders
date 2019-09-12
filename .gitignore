@@ -29,7 +29,6 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 .idea/**
-pom.xml
 target/**
 xpcourse.iml
 
