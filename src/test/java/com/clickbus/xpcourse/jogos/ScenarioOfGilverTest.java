@@ -126,7 +126,6 @@ public class ScenarioOfGilverTest {
         assertEquals(expected, jogo.tela());
     }
 
-    @Ignore
     @Test
     public void testEnemyShowed() {
         String expectedFirstMoment = "";
@@ -139,7 +138,7 @@ public class ScenarioOfGilverTest {
         assertEquals(expectedFirstMoment, jogo.tela());
 
         String expectedLater = "";
-        expectedLater += "  v  \n";
+        expectedLater += "  V  \n";
         expectedLater += "     \n";
         expectedLater += "     \n";
         expectedLater += "     \n";
