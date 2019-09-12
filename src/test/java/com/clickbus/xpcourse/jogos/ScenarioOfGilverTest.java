@@ -4,8 +4,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import javax.xml.ws.RespectBinding;
-
 import static org.junit.Assert.assertEquals;
 
 public class ScenarioOfGilverTest {
@@ -106,5 +104,25 @@ public class ScenarioOfGilverTest {
         jogo.tick();
         jogo.direita();
         assertEquals(expectedThirdMove, jogo.tela());
+    }
+
+    @Ignore
+    @Test
+    public void testManyMoves() {
+        String expected = "";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += " A   \n";
+        jogo.tick();
+        jogo.direita();
+        jogo.direita();
+        jogo.direita();
+        jogo.esquerda();
+        jogo.esquerda();
+        jogo.esquerda();
+
+        assertEquals(expected, jogo.tela());
     }
 }
