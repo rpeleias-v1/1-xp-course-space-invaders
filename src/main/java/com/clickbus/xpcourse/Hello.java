@@ -6,7 +6,7 @@ import java.util.List;
 public class Hello {
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        Space space = new Space();
+        Scenario space = new Scenario();
         List<String> spaceLines = space.renderThreeLines();
 
         while (true) {

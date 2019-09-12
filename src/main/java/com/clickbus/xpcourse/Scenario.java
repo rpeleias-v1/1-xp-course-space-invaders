@@ -3,7 +3,7 @@ package com.clickbus.xpcourse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Space {
+public class Scenario {
 
     public String renderLine() {
         return "----------------------------------------------------------";

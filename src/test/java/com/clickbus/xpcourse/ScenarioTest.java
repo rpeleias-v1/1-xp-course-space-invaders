@@ -5,13 +5,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class SpaceTest {
+public class ScenarioTest {
 
-    Space space;
+    Scenario space;
 
     @Before
     public void setUp() throws Exception {
-        space = new Space();
+        space = new Scenario();
     }
 
     @Test
