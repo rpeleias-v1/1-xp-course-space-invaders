@@ -12,6 +12,7 @@ public class SpaceOfGilver implements Jogo {
     int inimigoPosicaoLinha = 0;
     int inimigoPosicaoColuna = 2;
     int inimigoUltimaPosicao;
+    private boolean gameOver;
 
     char[][] mapaJogo = new char[TAMANHO_LINHA][TAMANHO_COLUNA];
     int navePosicaoLinha = 4;
@@ -20,6 +21,7 @@ public class SpaceOfGilver implements Jogo {
     boolean movendoInimigoDireita = false;
 
     public SpaceOfGilver() {
+        this.gameOver = false;
         iniciaMapa();
     }
 
@@ -34,6 +36,10 @@ public class SpaceOfGilver implements Jogo {
     }
 
     public String tela() {
+        if (this.gameOver) {
+            return "Game over";
+        }
+
         String tela = "";
         for (int i = 0; i < TAMANHO_LINHA; i++) {
             for (int j = 0; j < TAMANHO_COLUNA; j++) {
@@ -98,11 +104,13 @@ public class SpaceOfGilver implements Jogo {
 
     private void moverInimigoParaBaixo() {
 
-        if (inimigoPosicaoLinha + 1 < TAMANHO_LINHA) {
+        if (inimigoPosicaoLinha + 1 < this.navePosicaoLinha) {
             inimigoUltimaPosicao = inimigoPosicaoLinha;
             inimigoPosicaoLinha = inimigoPosicaoLinha + 1;
             mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] = ENEMY;
             mapaJogo[inimigoPosicaoLinha - 1][inimigoPosicaoColuna] = VAZIO;
+        } else {
+            this.gameOver = true;
         }
     }
 

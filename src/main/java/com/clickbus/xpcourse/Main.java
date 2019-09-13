@@ -18,9 +18,14 @@ public class Main {
         while (true) {
             System.out.println("-----");
             jogo.tick();
-            System.out.println(jogo.tela());
+            String tela = jogo.tela();
+            System.out.println(tela);
             limparTela();
-            Thread.sleep(1000);
+            if (tela.equals("Game over")) {
+                break;
+            }
+
+            Thread.sleep(300);
         }
     }
 
