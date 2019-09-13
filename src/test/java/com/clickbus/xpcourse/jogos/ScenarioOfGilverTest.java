@@ -17,90 +17,70 @@ public class ScenarioOfGilverTest {
 
     @Test
     public void testSpaceTicked() {
-        String expected = "";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "  A  \n";
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        assertEquals(expected, jogo.tela());
+        tick(3);
+        testarTela("     ",
+                            "     ",
+                            "     ",
+                            "     ",
+                            "  A  "
+        );
     }
 
     @Test
     public void testMoveLeft() {
-        jogo.tick();
-        String expectedFirstMove = "";
-        expectedFirstMove += "     \n";
-        expectedFirstMove += "     \n";
-        expectedFirstMove += "     \n";
-        expectedFirstMove += "     \n";
-        expectedFirstMove += " A   \n";
-
+        tick(1);
         jogo.esquerda();
-        assertEquals(expectedFirstMove, jogo.tela());
-
-        String expectedSecondMove = "";
-        expectedSecondMove += "     \n";
-        expectedSecondMove += "     \n";
-        expectedSecondMove += "     \n";
-        expectedSecondMove += "     \n";
-        expectedSecondMove += "A    \n";
+        testarTela("     ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  " A   "
+        );
         jogo.esquerda();
-        assertEquals(expectedSecondMove, jogo.tela());
-
-        String expectedThirdMove = "";
-        expectedThirdMove += "     \n";
-        expectedThirdMove += "     \n";
-        expectedThirdMove += "     \n";
-        expectedThirdMove += "     \n";
-        expectedThirdMove += "A    \n";
+        testarTela("     ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  "A    "
+        );
         jogo.esquerda();
-        assertEquals(expectedThirdMove, jogo.tela());
+        testarTela("     ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  "A    "
+        );
     }
 
     @Test
     public void testMoveRight() {
-        jogo.tick();
-        String expectedFirstMove = "";
-        expectedFirstMove += "     \n";
-        expectedFirstMove += "     \n";
-        expectedFirstMove += "     \n";
-        expectedFirstMove += "     \n";
-        expectedFirstMove += "   A \n";
+        tick(1);
         jogo.direita();
-        assertEquals(expectedFirstMove, jogo.tela());
-
-        String expectedSecondMove = "";
-        expectedSecondMove += "     \n";
-        expectedSecondMove += "     \n";
-        expectedSecondMove += "     \n";
-        expectedSecondMove += "     \n";
-        expectedSecondMove += "    A\n";
+        testarTela("     ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  "   A "
+        );
         jogo.direita();
-        assertEquals(expectedSecondMove, jogo.tela());
-
-        String expectedThirdMove = "";
-        expectedThirdMove += "     \n";
-        expectedThirdMove += "     \n";
-        expectedThirdMove += "     \n";
-        expectedThirdMove += "     \n";
-        expectedThirdMove += "    A\n";
+        testarTela("     ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  "    A"
+        );
         jogo.direita();
-        assertEquals(expectedThirdMove, jogo.tela());
+        testarTela("     ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  "    A"
+        );
     }
 
     @Test
     public void testManyMoves() {
-        String expected = "";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += " A   \n";
-        jogo.tick();
+        tick(1);
         jogo.direita();
         jogo.direita();
         jogo.direita();
@@ -108,100 +88,100 @@ public class ScenarioOfGilverTest {
         jogo.esquerda();
         jogo.esquerda();
 
-        assertEquals(expected, jogo.tela());
+        testarTela("     ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  " A   "
+        );
     }
 
     @Test
     public void testEnemyShowed() {
-        String expectedFirstMoment = "";
-        expectedFirstMoment += "     \n";
-        expectedFirstMoment += "     \n";
-        expectedFirstMoment += "     \n";
-        expectedFirstMoment += "     \n";
-        expectedFirstMoment += "  A  \n";
-        jogo.tick();
-        assertEquals(expectedFirstMoment, jogo.tela());
+        tick(1);
+        testarTela("     ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  "  A  "
+        );
 
-        String expectedLater = "";
-        expectedLater += "  V  \n";
-        expectedLater += "     \n";
-        expectedLater += "     \n";
-        expectedLater += "     \n";
-        expectedLater += "  A  \n";
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        assertEquals(expectedLater, jogo.tela());
+        tick(4);
+        testarTela("  V  ",
+                                  "     ",
+                                  "     ",
+                                  "     ",
+                                  "  A  "
+        );
     }
 
     @Test
     @Ignore
     public void testEnemyMovement() {
-        String expected = "";
-        expected += " V   \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "  A  \n";
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        assertEquals(expected, jogo.tela());
+        tick(6);
+        testarTela(" V   ",
+                "     ",
+                "     ",
+                "     ",
+                "  A  "
+        );
     }
 
     @Test
     @Ignore
     public void testEnemyShouldCollide() {
-        String expected = "";
-        expected += "     \n";
-        expected += "V    \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "  A  \n";
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-        jogo.tick();
-
-        assertEquals(expected, jogo.tela());
+        tick(8);
+        testarTela("     ",
+                                  "V     ",
+                                  "     ",
+                                  "     ",
+                                  "  A  "
+        );
     }
 
     @Test
     @Ignore
     public void testShipShouldShoot() {
-
-        String expected = "";
-        expected += "  |  \n";
-        expected += "  |  \n";
-        expected += "  |  \n";
-        expected += "  |  \n";
-        expected += "  A  \n";
-
         jogo.tiro();
-        assertEquals(expected, jogo.tela());
+        testarTela("  |  ",
+                "  |  ",
+                "  |  ",
+                "  |  ",
+                "  A  "
+        );
     }
 
     @Test
     @Ignore
     public void testShootShouldDisappear() {
-
-        String expected = "";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "     \n";
-        expected += "  A  \n";
-
         jogo.tiro();
-        jogo.tick();
-        assertEquals(expected, jogo.tela());
+        tick(1);
+        testarTela("     ",
+                "     ",
+                "     ",
+                "     ",
+                "  A  "
+        );
     }
+
+    private void tick(int quantos)
+    {
+        for(int i = 0; i < quantos; i++)
+        {
+            jogo.tick();
+        }
+    }
+
+    private void testarTela(String... linhasEsperadas)
+    {
+        String esperada =
+                linhasEsperadas[0] + "\n" +
+                linhasEsperadas[1] + "\n" +
+                linhasEsperadas[2] + "\n" +
+                linhasEsperadas[3] + "\n" +
+                linhasEsperadas[4] + "\n";
+
+        assertEquals(esperada, jogo.tela());
+    }
+
 }
