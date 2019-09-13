@@ -177,8 +177,7 @@ public class ScenarioOfGilverTest {
     @Ignore
     public void testGameOver() {
         tick(18);
-        testarTela("Game over"
-        );
+        testarTela("Game over");
     }
 
     private void tick(int quantos)
