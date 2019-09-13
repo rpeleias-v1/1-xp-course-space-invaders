@@ -33,6 +33,7 @@ public class Main {
         imagens.put('V', ImageIO.read(new FileInputStream("nave_inimiga.png")));
         imagens.put('A', ImageIO.read(new FileInputStream("gilvers_space_ship.jpg")));
         imagens.put('|', ImageIO.read(new FileInputStream("tiro.png")));
+        imagens.put(' ', ImageIO.read(new FileInputStream("blank.png")));
     }
 
     private static void jogar(Jogo jogo) throws InterruptedException {
