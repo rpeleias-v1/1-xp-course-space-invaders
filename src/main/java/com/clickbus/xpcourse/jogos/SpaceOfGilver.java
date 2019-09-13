@@ -1,5 +1,7 @@
 package com.clickbus.xpcourse.jogos;
 
+import org.omg.CORBA.INITIALIZE;
+
 public class SpaceOfGilver implements Jogo {
 
     public static final char ENEMY = 'V';
@@ -175,13 +177,12 @@ public class SpaceOfGilver implements Jogo {
 
     private void verificaMorteInimigo(){
 
-        if (posicaoTiro == inimigoPosicaoColuna)
+        if (posicaoTiro == inimigoPosicaoColuna && mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] == ENEMY)
 
             mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] = MORTE_INIMIGO;
 
             for (int i = 0; i < inimigoPosicaoLinha; i++)
                 mapaJogo[i][posicaoTiro] = VAZIO;
-
     }
 
 }
