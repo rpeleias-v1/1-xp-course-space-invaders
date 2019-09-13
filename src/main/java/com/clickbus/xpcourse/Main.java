@@ -11,6 +11,7 @@ public class Main {
         Jogo jogo = new SpaceOfGilver();
         jogo.tela();
         shipMovement(jogo);
+
         while (true) {
             System.out.println("-----");
             jogo.tick();
@@ -32,11 +33,19 @@ public class Main {
         button.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    jogo.esquerda();
-                }
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    jogo.direita();
+
+                switch (e.getKeyCode())
+                {
+                    case KeyEvent.VK_LEFT:
+                        jogo.esquerda();
+                        break;
+
+                    case KeyEvent.VK_RIGHT:
+                        jogo.direita();
+                        break;
+
+                    default:
+                        break;
                 }
             }
         });
