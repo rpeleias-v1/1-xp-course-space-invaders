@@ -18,11 +18,12 @@ public class ScenarioOfGilverTest {
     @Test
     public void testSpaceTicked() {
         tick(3);
-        testarTela("     ",
-                            "     ",
-                            "     ",
-                            "     ",
-                            "  A  "
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "  A  "
         );
     }
 
@@ -30,25 +31,28 @@ public class ScenarioOfGilverTest {
     public void testMoveLeft() {
         tick(1);
         jogo.esquerda();
-        testarTela("     ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  " A   "
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                " A   "
         );
         jogo.esquerda();
-        testarTela("     ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  "A    "
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "A    "
         );
         jogo.esquerda();
-        testarTela("     ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  "A    "
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "A    "
         );
     }
 
@@ -56,25 +60,28 @@ public class ScenarioOfGilverTest {
     public void testMoveRight() {
         tick(1);
         jogo.direita();
-        testarTela("     ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  "   A "
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "   A "
         );
         jogo.direita();
-        testarTela("     ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  "    A"
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "    A"
         );
         jogo.direita();
-        testarTela("     ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  "    A"
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "    A"
         );
     }
 
@@ -88,37 +95,41 @@ public class ScenarioOfGilverTest {
         jogo.esquerda();
         jogo.esquerda();
 
-        testarTela("     ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  " A   "
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                " A   "
         );
     }
 
     @Test
     public void testEnemyShowed() {
         tick(1);
-        testarTela("     ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  "  A  "
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "  A  "
         );
 
         tick(4);
-        testarTela("  V  ",
-                                  "     ",
-                                  "     ",
-                                  "     ",
-                                  "  A  "
+        testarTela(
+                "  V  ",
+                "     ",
+                "     ",
+                "     ",
+                "  A  "
         );
     }
 
     @Test
     public void testEnemyMovement() {
         tick(6);
-        testarTela(" V   ",
+        testarTela(
+                " V   ",
                 "     ",
                 "     ",
                 "     ",
@@ -129,22 +140,24 @@ public class ScenarioOfGilverTest {
     @Test
     public void testEnemyShouldCollide() {
         tick(8);
-        testarTela("     ",
-                                  "V    ",
-                                  "     ",
-                                  "     ",
-                                  "  A  "
+        testarTela(
+                "     ",
+                "V    ",
+                "     ",
+                "     ",
+                "  A  "
         );
     }
 
     @Test
     public void testShipShouldShoot() {
         jogo.tiro();
-        testarTela("  |  ",
-                                   "  |  ",
-                                   "  |  ",
-                                   "  |  ",
-                                   "  A  "
+        testarTela(
+                "  |  ",
+                "  |  ",
+                "  |  ",
+                "  |  ",
+                "  A  "
         );
     }
 
@@ -152,11 +165,12 @@ public class ScenarioOfGilverTest {
     public void testShootShouldDisappear() {
         jogo.tiro();
         tick(2);
-        testarTela("     ",
-                                   "     ",
-                                   "     ",
-                                   "     ",
-                                   "  A  "
+        testarTela(
+                "     ",
+                "     ",
+                "     ",
+                "     ",
+                "  A  "
         );
     }
 
@@ -165,21 +179,9 @@ public class ScenarioOfGilverTest {
     public void testEnemyShouldBeDestroyedWhenHit() {
         tick(5);
         jogo.tiro();
-        testarTela("  X  ",
-                                   "  |  ",
-                                   "  |  ",
-                                   "  |  ",
-                                   "  A  "
-        );
-    }
-
-    @Test
-    @Ignore
-    public void testEnemyShipShouldBeDestroyedInADifferentPosition() {
-        tick(10);
-        jogo.tiro();
-        testarTela("     ",
+        testarTela(
                 "  X  ",
+                "  |  ",
                 "  |  ",
                 "  |  ",
                 "  A  "
@@ -188,9 +190,33 @@ public class ScenarioOfGilverTest {
 
     @Test
     @Ignore
+    public void testEnemyShipShouldBeDestroyedInADifferentPosition() {
+        tick(10);
+        jogo.tiro();
+        testarTela(
+                "     ",
+                "  X  ",
+                "  |  ",
+                "  |  ",
+                "  A  "
+        );
+    }
+
+    @Test
     public void testGameOver() {
         tick(18);
         testarTela("Game over");
+    }
+
+    @Test
+    @Ignore
+    public void testWinGameWhenDestroyAllEnemies() {
+        tick(5);
+        jogo.tiro();
+        tick(1);
+        testarTela(
+                "Congratulations",
+                "All enemies has been destroyed!");
     }
 
     private void tick(int quantos)
