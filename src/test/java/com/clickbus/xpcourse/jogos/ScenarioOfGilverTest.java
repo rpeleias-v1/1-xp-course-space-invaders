@@ -173,7 +173,6 @@ public class ScenarioOfGilverTest {
         jogo.tick();
         jogo.tick();
         jogo.tick();
-        jogo.tick();
 
         assertEquals(expected, jogo.tela());
     }
