@@ -19,6 +19,8 @@ public class SpaceOfGilver implements Jogo {
     int navePosicaoColuna = 2;
     boolean movendoInimigoEsquerda = false;
     boolean movendoInimigoDireita = false;
+    int posicaoTiro = -1;
+    int tickTiro;
 
     public SpaceOfGilver() {
         this.gameOver = false;
@@ -71,11 +73,13 @@ public class SpaceOfGilver implements Jogo {
 
         for (int i = 1; i < TAMANHO_LINHA; i++ )
             mapaJogo[navePosicaoLinha - i][navePosicaoColuna] = TIRO;
+
+        posicaoTiro = navePosicaoColuna;
+
+        tickTiro = countTick;
     }
 
     public void tick() {
-
-        ++countTick;
 
         if (countTick == 5) {
             criarInimigo();
@@ -83,7 +87,10 @@ public class SpaceOfGilver implements Jogo {
             moverInimigo();
         }
 
-        limpaTiro();
+        if (countTick > tickTiro)
+            limpaTiro(posicaoTiro);
+
+        ++countTick;
     }
 
     private void criarInimigo() {
@@ -151,14 +158,20 @@ public class SpaceOfGilver implements Jogo {
         movendoInimigoEsquerda = true;
     }
 
-    private void limpaTiro(){
-        for (int i = 0; i < TAMANHO_LINHA; i++) {
-            for (int j = 0; j < TAMANHO_COLUNA; j++) {
+    private void limpaTiro(int coluna){
 
-                if(mapaJogo[i][j] == TIRO)
-                    mapaJogo[i][j] = VAZIO;
-            }
+        if (coluna < 0)
+            return;
+
+        for (int j = 0; j < TAMANHO_COLUNA; j++) {
+
+            if(mapaJogo[j][coluna] == TIRO)
+                mapaJogo[j][coluna] = VAZIO;
         }
+    }
+
+    private void verificaMorteInimigo(){
+
     }
 
 }

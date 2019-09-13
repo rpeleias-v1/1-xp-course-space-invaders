@@ -5,13 +5,25 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 public class Main {
+
+
+    private static Map<Character, BufferedImage> imagens;
 
     public static void main(String[] args) throws InterruptedException {
         Jogo jogo = new SpaceOfGilver();
         capturarMovimentos(jogo);
         jogar(jogo);
+    }
+
+    private static void carregarImagens() throws IOException {
+        imagens = new HashMap<Character, BufferedImage>();
+        imagens.put('V', ImageIO.read(new FileInputStream("pacboy.png")));
+        imagens.put('M', ImageIO.read(new FileInputStream("fantasma.png")));
+        imagens.put('*', ImageIO.read(new FileInputStream("food.png")));
+        imagens.put('|', ImageIO.read(new FileInputStream("neon.png")));
     }
 
     private static void jogar(Jogo jogo) throws InterruptedException {
@@ -25,7 +37,7 @@ public class Main {
                 break;
             }
 
-            Thread.sleep(300);
+            Thread.sleep(1000);
         }
     }
 
