@@ -25,7 +25,7 @@ public class Main {
                 break;
             }
 
-            Thread.sleep(300);
+            Thread.sleep(1000);
         }
     }
 

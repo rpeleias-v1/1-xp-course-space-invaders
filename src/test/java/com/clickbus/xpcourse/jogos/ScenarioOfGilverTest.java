@@ -151,7 +151,7 @@ public class ScenarioOfGilverTest {
     @Test
     public void testShootShouldDisappear() {
         jogo.tiro();
-        tick(1);
+        tick(2);
         testarTela("     ",
                                    "     ",
                                    "     ",
