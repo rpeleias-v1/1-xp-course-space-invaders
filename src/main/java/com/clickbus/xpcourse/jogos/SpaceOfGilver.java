@@ -76,6 +76,8 @@ public class SpaceOfGilver implements Jogo {
         } else if (countTick > 5) {
             moverInimigo();
         }
+
+        limpaTiro();
     }
 
     private void criarInimigo() {
@@ -139,6 +141,16 @@ public class SpaceOfGilver implements Jogo {
 
         movendoInimigoDireita = false;
         movendoInimigoEsquerda = true;
+    }
+
+    private void limpaTiro(){
+        for (int i = 0; i < TAMANHO_LINHA; i++) {
+            for (int j = 0; j < TAMANHO_COLUNA; j++) {
+
+                if(mapaJogo[i][j] == TIRO)
+                    mapaJogo[i][j] = VAZIO;
+            }
+        }
     }
 
 }
