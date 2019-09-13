@@ -74,14 +74,18 @@ public class SpaceOfGilver implements Jogo {
 
     public void tiro() {
 
-        for (int i = 1; i < TAMANHO_LINHA; i++ )
+        for (int i = 1; i < TAMANHO_LINHA; i++ ) {
+
+            if (mapaJogo[navePosicaoLinha - i][navePosicaoColuna] == ENEMY) {
+                mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] = MORTE_INIMIGO;
+                return;
+            }
             mapaJogo[navePosicaoLinha - i][navePosicaoColuna] = TIRO;
+        }
 
         posicaoTiro = navePosicaoColuna;
 
         tickTiro = countTick;
-
-        verificaMorteInimigo();
     }
 
     public void tick() {
