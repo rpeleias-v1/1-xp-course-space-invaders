@@ -130,7 +130,7 @@ public class ScenarioOfGilverTest {
     public void testEnemyShouldCollide() {
         tick(8);
         testarTela("     ",
-                                  "V     ",
+                                  "V    ",
                                   "     ",
                                   "     ",
                                   "  A  "
@@ -141,23 +141,43 @@ public class ScenarioOfGilverTest {
     public void testShipShouldShoot() {
         jogo.tiro();
         testarTela("  |  ",
-                "  |  ",
-                "  |  ",
-                "  |  ",
-                "  A  "
+                                   "  |  ",
+                                   "  |  ",
+                                   "  |  ",
+                                   "  A  "
+        );
+    }
+
+    @Test
+    public void testShootShouldDisappear() {
+        jogo.tiro();
+        tick(1);
+        testarTela("     ",
+                                   "     ",
+                                   "     ",
+                                   "     ",
+                                   "  A  "
         );
     }
 
     @Test
     @Ignore
-    public void testShootShouldDisappear() {
+    public void testEnemyShouldBeDestroyedWhenHit() {
+        tick(5);
         jogo.tiro();
-        tick(1);
-        testarTela("     ",
-                "     ",
-                "     ",
-                "     ",
-                "  A  "
+        testarTela("  X  ",
+                                   "  |  ",
+                                   "  |  ",
+                                   "  |  ",
+                                   "  A  "
+        );
+    }
+
+    @Test
+    @Ignore
+    public void testGameOver() {
+        tick(18);
+        testarTela("Game over"
         );
     }
 
