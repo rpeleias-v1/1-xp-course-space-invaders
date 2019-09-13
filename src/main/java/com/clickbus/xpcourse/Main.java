@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         Jogo jogo = new SpaceOfGilver();
         jogo.tela();
-        shipMovement(jogo);
+        startCapturingButtons(jogo);
 
         while (true) {
             System.out.println("-----");
@@ -25,7 +25,7 @@ public class Main {
         System.out.println("\n\n\n\n\n");
     }
 
-    public static void shipMovement(final Jogo jogo) {
+    public static void startCapturingButtons(final Jogo jogo) {
         JFrame frame = new JFrame();
         JButton button = new JButton();
         frame.add(button);
