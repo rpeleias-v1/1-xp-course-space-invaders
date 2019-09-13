@@ -2,6 +2,7 @@ package com.clickbus.xpcourse.jogos;
 
 public class SpaceOfGilver implements Jogo {
 
+    public static final char NAVE = 'A';
     private static int LINE_SIZE = 5;
     private static int COLUMN_SIZE = 5;
     private int countTick = 0;
@@ -26,7 +27,7 @@ public class SpaceOfGilver implements Jogo {
             }
         }
 
-        gameMap[shipLinePosition][shipColumnPosition] = 'A';
+        gameMap[shipLinePosition][shipColumnPosition] = NAVE;
 
     }
 
@@ -44,7 +45,7 @@ public class SpaceOfGilver implements Jogo {
     public void direita() {
         if (shipColumnPosition + 1 < COLUMN_SIZE) {
             shipColumnPosition = shipColumnPosition + 1;
-            gameMap[shipLinePosition][shipColumnPosition] = 'A';
+            gameMap[shipLinePosition][shipColumnPosition] = NAVE;
             gameMap[shipLinePosition][shipColumnPosition - 1] = ' ';
         }
     }
@@ -52,7 +53,7 @@ public class SpaceOfGilver implements Jogo {
     public void esquerda() {
         if (shipColumnPosition - 1 >= 0) {
             shipColumnPosition = shipColumnPosition - 1;
-            gameMap[shipLinePosition][shipColumnPosition] = 'A';
+            gameMap[shipLinePosition][shipColumnPosition] = NAVE;
             gameMap[shipLinePosition][shipColumnPosition + 1] = ' ';
         }
     }
@@ -106,13 +107,13 @@ public class SpaceOfGilver implements Jogo {
 
     private void moveEnemyLeft(){
 
-        if(enemyColumnPosition - 1 >= 0){
+        if (enemyColumnPosition - 1 >= 0) {
 
             enemyColumnPosition = enemyColumnPosition - 1;
             gameMap[enemyLinePosition][enemyColumnPosition] = 'V';
             gameMap[enemyLinePosition][enemyColumnPosition + 1] = ' ';
 
-        }else{
+        } else {
             moveEnemyDown();
             movingLeft = false;
             movingRight = true;

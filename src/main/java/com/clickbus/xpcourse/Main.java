@@ -9,9 +9,12 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         Jogo jogo = new SpaceOfGilver();
-        jogo.tela();
         startCapturingButtons(jogo);
 
+        loopPrincipal(jogo);
+    }
+
+    private static void loopPrincipal(Jogo jogo) throws IOException, InterruptedException {
         while (true) {
             System.out.println("-----");
             jogo.tick();
@@ -21,7 +24,7 @@ public class Main {
         }
     }
 
-    public static void clearScreen() throws IOException {
+    public static void clearScreen() {
         System.out.println("\n\n\n\n\n");
     }
 
@@ -42,9 +45,6 @@ public class Main {
 
                     case KeyEvent.VK_RIGHT:
                         jogo.direita();
-                        break;
-
-                    default:
                         break;
                 }
             }
