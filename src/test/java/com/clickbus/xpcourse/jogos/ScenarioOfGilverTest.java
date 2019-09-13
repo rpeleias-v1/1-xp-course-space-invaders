@@ -155,4 +155,26 @@ public class ScenarioOfGilverTest {
         jogo.tick();
         assertEquals(expected, jogo.tela());
     }
+
+    @Test
+    @Ignore
+    public void testEnemyShouldCollide() {
+        String expected = "";
+        expected += "     \n";
+        expected += "V    \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "  A  \n";
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+
+        assertEquals(expected, jogo.tela());
+    }
 }
