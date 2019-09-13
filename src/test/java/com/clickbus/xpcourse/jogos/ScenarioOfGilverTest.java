@@ -175,6 +175,19 @@ public class ScenarioOfGilverTest {
 
     @Test
     @Ignore
+    public void testEnemyShipShouldBeDestroyedInADifferentPosition() {
+        tick(5);
+        jogo.tiro();
+        testarTela("     ",
+                "  X  ",
+                "  |  ",
+                "  |  ",
+                "  A  "
+        );
+    }
+
+    @Test
+    @Ignore
     public void testGameOver() {
         tick(18);
         testarTela("Game over");
