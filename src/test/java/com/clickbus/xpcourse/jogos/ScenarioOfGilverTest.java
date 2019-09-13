@@ -149,7 +149,6 @@ public class ScenarioOfGilverTest {
     }
 
     @Test
-    @Ignore
     public void testShootShouldDisappear() {
         jogo.tiro();
         tick(1);
@@ -171,6 +170,14 @@ public class ScenarioOfGilverTest {
                                    "  |  ",
                                    "  |  ",
                                    "  A  "
+        );
+    }
+
+    @Test
+    @Ignore
+    public void testGameOver() {
+        tick(18);
+        testarTela("Game over"
         );
     }
 
