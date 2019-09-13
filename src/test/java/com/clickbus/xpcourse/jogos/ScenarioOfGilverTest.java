@@ -116,7 +116,6 @@ public class ScenarioOfGilverTest {
     }
 
     @Test
-    @Ignore
     public void testEnemyMovement() {
         tick(6);
         testarTela(" V   ",
@@ -128,7 +127,6 @@ public class ScenarioOfGilverTest {
     }
 
     @Test
-    @Ignore
     public void testEnemyShouldCollide() {
         tick(8);
         testarTela("     ",
@@ -140,7 +138,6 @@ public class ScenarioOfGilverTest {
     }
 
     @Test
-    @Ignore
     public void testShipShouldShoot() {
         jogo.tiro();
         testarTela("  |  ",

@@ -5,38 +5,39 @@ public class SpaceOfGilver implements Jogo {
     public static final char ENEMY = 'V';
     public static final char VAZIO = ' ';
     public static final char NAVE = 'A';
-    private static int LINE_SIZE = 5;
+    public static final char TIRO = '|';
+    private static int TAMANHO_LINHA = 5;
     private static int TAMANHO_COLUNA = 5;
     private int countTick = 0;
-    int enemyLinePosition = 0;
-    int enemyColumnPosition = 2;
-    int enemyLastLine;
+    int inimigoPosicaoLinha = 0;
+    int inimigoPosicaoColuna = 2;
+    int inimigoUltimaPosicao;
 
-    char[][] gameMap = new char[LINE_SIZE][TAMANHO_COLUNA];
-    int shipLinePosition = 4;
-    int shipColumnPosition = 2;
+    char[][] mapaJogo = new char[TAMANHO_LINHA][TAMANHO_COLUNA];
+    int navePosicaoLinha = 4;
+    int navePosicaoColuna = 2;
     boolean movendoInimigoEsquerda = false;
     boolean movendoInimigoDireita = false;
 
     public SpaceOfGilver() {
-        initMap();
+        iniciaMapa();
     }
 
-    private void initMap() {
-        for (int i = 0; i < LINE_SIZE; i++) {
+    private void iniciaMapa() {
+        for (int i = 0; i < TAMANHO_LINHA; i++) {
             for (int j = 0; j < TAMANHO_COLUNA; j++) {
-                gameMap[i][j] = VAZIO;
+                mapaJogo[i][j] = VAZIO;
             }
         }
 
-        gameMap[shipLinePosition][shipColumnPosition] = NAVE;
+        mapaJogo[navePosicaoLinha][navePosicaoColuna] = NAVE;
     }
 
     public String tela() {
         String tela = "";
-        for (int i = 0; i < LINE_SIZE; i++) {
+        for (int i = 0; i < TAMANHO_LINHA; i++) {
             for (int j = 0; j < TAMANHO_COLUNA; j++) {
-                tela += gameMap[i][j];
+                tela += mapaJogo[i][j];
             }
             tela += "\n";
         }
@@ -45,23 +46,25 @@ public class SpaceOfGilver implements Jogo {
     }
 
     public void direita() {
-        if (shipColumnPosition + 1 < TAMANHO_COLUNA) {
-            shipColumnPosition = shipColumnPosition + 1;
-            gameMap[shipLinePosition][shipColumnPosition] = NAVE;
-            gameMap[shipLinePosition][shipColumnPosition - 1] = VAZIO;
+        if (navePosicaoColuna + 1 < TAMANHO_COLUNA) {
+            navePosicaoColuna = navePosicaoColuna + 1;
+            mapaJogo[navePosicaoLinha][navePosicaoColuna] = NAVE;
+            mapaJogo[navePosicaoLinha][navePosicaoColuna - 1] = VAZIO;
         }
     }
 
     public void esquerda() {
-        if (shipColumnPosition - 1 >= 0) {
-            shipColumnPosition = shipColumnPosition - 1;
-            gameMap[shipLinePosition][shipColumnPosition] = NAVE;
-            gameMap[shipLinePosition][shipColumnPosition + 1] = VAZIO;
+        if (navePosicaoColuna - 1 >= 0) {
+            navePosicaoColuna = navePosicaoColuna - 1;
+            mapaJogo[navePosicaoLinha][navePosicaoColuna] = NAVE;
+            mapaJogo[navePosicaoLinha][navePosicaoColuna + 1] = VAZIO;
         }
     }
 
     public void tiro() {
-        //TODO
+
+        for (int i = 1; i < TAMANHO_LINHA; i++ )
+            mapaJogo[navePosicaoLinha - i][navePosicaoColuna] = TIRO;
     }
 
     public void tick() {
@@ -76,7 +79,7 @@ public class SpaceOfGilver implements Jogo {
     }
 
     private void criarInimigo() {
-        gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
+        mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] = ENEMY;
     }
 
     private void moverInimigo() {
@@ -95,24 +98,24 @@ public class SpaceOfGilver implements Jogo {
 
     private void moverInimigoParaBaixo() {
 
-        if (enemyLinePosition + 1 < LINE_SIZE) {
-            enemyLastLine = enemyLinePosition;
-            enemyLinePosition = enemyLinePosition + 1;
-            gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
-            gameMap[enemyLinePosition - 1][enemyColumnPosition] = VAZIO;
+        if (inimigoPosicaoLinha + 1 < TAMANHO_LINHA) {
+            inimigoUltimaPosicao = inimigoPosicaoLinha;
+            inimigoPosicaoLinha = inimigoPosicaoLinha + 1;
+            mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] = ENEMY;
+            mapaJogo[inimigoPosicaoLinha - 1][inimigoPosicaoColuna] = VAZIO;
         }
     }
 
     private void moverInimigoParaEsquerda() {
 
-        if (enemyColumnPosition - 1 >= 0) {
-            enemyColumnPosition = enemyColumnPosition - 1;
-            gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
-            gameMap[enemyLinePosition][enemyColumnPosition + 1] = VAZIO;
+        if (inimigoPosicaoColuna - 1 >= 0) {
+            inimigoPosicaoColuna = inimigoPosicaoColuna - 1;
+            mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] = ENEMY;
+            mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna + 1] = VAZIO;
             return;
         }
 
-        if (enemyColumnPosition == 0) {
+        if (inimigoPosicaoColuna == 0) {
             moverInimigoParaBaixo();
         }
 
@@ -122,15 +125,15 @@ public class SpaceOfGilver implements Jogo {
 
     private void moverInimigoParaDireita() {
 
-        if (enemyColumnPosition + 1 < TAMANHO_COLUNA) {
+        if (inimigoPosicaoColuna + 1 < TAMANHO_COLUNA) {
 
-            enemyColumnPosition = enemyColumnPosition + 1;
-            gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
-            gameMap[enemyLinePosition][enemyColumnPosition - 1] = VAZIO;
+            inimigoPosicaoColuna = inimigoPosicaoColuna + 1;
+            mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] = ENEMY;
+            mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna - 1] = VAZIO;
             return;
         }
 
-        if (enemyColumnPosition == TAMANHO_COLUNA - 1) {
+        if (inimigoPosicaoColuna == TAMANHO_COLUNA - 1) {
             moverInimigoParaBaixo();
         }
 
