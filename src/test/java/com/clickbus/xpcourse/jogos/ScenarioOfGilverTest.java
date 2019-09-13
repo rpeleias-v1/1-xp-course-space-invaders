@@ -12,9 +12,6 @@ public class ScenarioOfGilverTest {
 
     @Before
     public void setup() {
-        //SpaceOfGilver novoJogo = new SpaceOfGilver();
-        //novoJogo.sementeAleatoria(0);
-        //jogo = novoJogo;
         this.jogo = new SpaceOfGilver();
     }
 
