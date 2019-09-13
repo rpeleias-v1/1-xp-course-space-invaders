@@ -1,34 +1,34 @@
 package com.clickbus.xpcourse;
 import com.clickbus.xpcourse.jogos.Jogo;
 import com.clickbus.xpcourse.jogos.SpaceOfGilver;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException {
         Jogo jogo = new SpaceOfGilver();
-        startCapturingButtons(jogo);
-
-        loopPrincipal(jogo);
+        capturarMovimentos(jogo);
+        jogar(jogo);
     }
 
-    private static void loopPrincipal(Jogo jogo) throws IOException, InterruptedException {
+    private static void jogar(Jogo jogo) throws InterruptedException {
         while (true) {
             System.out.println("-----");
             jogo.tick();
             System.out.println(jogo.tela());
-            clearScreen();
+            limparTela();
             Thread.sleep(1000);
         }
     }
 
-    public static void clearScreen() {
+    public static void limparTela() {
         System.out.println("\n\n\n\n\n");
     }
 
-    public static void startCapturingButtons(final Jogo jogo) {
+    public static void capturarMovimentos(final Jogo jogo) {
         JFrame frame = new JFrame();
         JButton button = new JButton();
         frame.add(button);

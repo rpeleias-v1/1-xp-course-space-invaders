@@ -2,6 +2,8 @@ package com.clickbus.xpcourse.jogos;
 
 public class SpaceOfGilver implements Jogo {
 
+    public static final char ENEMY = 'V';
+    public static final char VAZIO = ' ';
     public static final char NAVE = 'A';
     private static int LINE_SIZE = 5;
     private static int COLUMN_SIZE = 5;
@@ -23,12 +25,11 @@ public class SpaceOfGilver implements Jogo {
     private void initMap() {
         for (int i = 0; i < LINE_SIZE; i++) {
             for (int j = 0; j < COLUMN_SIZE; j++) {
-                gameMap[i][j] = ' ';
+                gameMap[i][j] = VAZIO;
             }
         }
 
         gameMap[shipLinePosition][shipColumnPosition] = NAVE;
-
     }
 
     public String tela() {
@@ -39,6 +40,7 @@ public class SpaceOfGilver implements Jogo {
             }
             tela += "\n";
         }
+
         return tela;
     }
 
@@ -46,7 +48,7 @@ public class SpaceOfGilver implements Jogo {
         if (shipColumnPosition + 1 < COLUMN_SIZE) {
             shipColumnPosition = shipColumnPosition + 1;
             gameMap[shipLinePosition][shipColumnPosition] = NAVE;
-            gameMap[shipLinePosition][shipColumnPosition - 1] = ' ';
+            gameMap[shipLinePosition][shipColumnPosition - 1] = VAZIO;
         }
     }
 
@@ -54,87 +56,86 @@ public class SpaceOfGilver implements Jogo {
         if (shipColumnPosition - 1 >= 0) {
             shipColumnPosition = shipColumnPosition - 1;
             gameMap[shipLinePosition][shipColumnPosition] = NAVE;
-            gameMap[shipLinePosition][shipColumnPosition + 1] = ' ';
+            gameMap[shipLinePosition][shipColumnPosition + 1] = VAZIO;
         }
     }
 
     public void tiro() {
-
+        //TODO
     }
 
     public void tick() {
 
         ++countTick;
 
-        if(countTick == 5){
-            createEnemy();
-        }else if(countTick > 5){
-            moveEnemy();
+        if (countTick == 5) {
+            criarInimigo();
+        } else if (countTick > 5) {
+            moverInimigo();
         }
-
     }
 
-    public void createEnemy(){
-        gameMap[enemyLinePosition][enemyColumnPosition] = 'V';
+    private void criarInimigo() {
+        gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
     }
 
-    public void moveEnemy(){
+    private void moverInimigo() {
 
-        if(!movingLeft && !movingRight){
+        if (!movingLeft && !movingRight) {
             movingLeft = true;
         }
 
-        if(movingRight){
-            moveEnemyRight();
+        if (movingRight) {
+            moverInimigoParaDireita();
             return;
         }
 
-        moveEnemyLeft();
+        moverInimigoParaEsquerda();
     }
 
-    private void moveEnemyDown(){
+    private void moverInimigoParaBaixo() {
 
-        if(enemyLinePosition + 1 < LINE_SIZE) {
-
+        if (enemyLinePosition + 1 < LINE_SIZE) {
             enemyLastLine = enemyLinePosition;
-
             enemyLinePosition = enemyLinePosition + 1;
-            gameMap[enemyLinePosition][enemyColumnPosition] = 'V';
-            gameMap[enemyLinePosition - 1][enemyColumnPosition] = ' ';
-
+            gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
+            gameMap[enemyLinePosition - 1][enemyColumnPosition] = VAZIO;
         }
     }
 
-    private void moveEnemyLeft(){
+    private void moverInimigoParaEsquerda() {
 
         if (enemyColumnPosition - 1 >= 0) {
-
             enemyColumnPosition = enemyColumnPosition - 1;
-            gameMap[enemyLinePosition][enemyColumnPosition] = 'V';
-            gameMap[enemyLinePosition][enemyColumnPosition + 1] = ' ';
-
-        } else {
-            moveEnemyDown();
-            movingLeft = false;
-            movingRight = true;
+            gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
+            gameMap[enemyLinePosition][enemyColumnPosition + 1] = VAZIO;
+            return;
         }
+
+        if (enemyColumnPosition == 0) {
+            moverInimigoParaBaixo();
+        }
+
+        movingLeft = false;
+        movingRight = true;
     }
 
-    private void moveEnemyRight(){
+    private void moverInimigoParaDireita() {
 
         if (enemyColumnPosition + 1 < COLUMN_SIZE) {
 
             enemyColumnPosition = enemyColumnPosition + 1;
-            gameMap[enemyLinePosition][enemyColumnPosition] = 'V';
-            gameMap[enemyLinePosition][enemyColumnPosition - 1] = ' ';
-
-            enemyLastLine = enemyLinePosition;
-
-        }else{
-            moveEnemyDown();
-            movingLeft = true;
-            movingRight = false;
+            gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
+            gameMap[enemyLinePosition][enemyColumnPosition - 1] = VAZIO;
+            return;
         }
+
+        if (enemyColumnPosition == COLUMN_SIZE - 1) {
+            moverInimigoParaBaixo();
+        }
+
+        movingRight = false;
+        movingLeft = true;
     }
 
 }
