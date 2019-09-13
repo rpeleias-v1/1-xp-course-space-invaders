@@ -6,17 +6,17 @@ public class SpaceOfGilver implements Jogo {
     public static final char VAZIO = ' ';
     public static final char NAVE = 'A';
     private static int LINE_SIZE = 5;
-    private static int COLUMN_SIZE = 5;
+    private static int TAMANHO_COLUNA = 5;
     private int countTick = 0;
     int enemyLinePosition = 0;
     int enemyColumnPosition = 2;
     int enemyLastLine;
 
-    char[][] gameMap = new char[LINE_SIZE][COLUMN_SIZE];
+    char[][] gameMap = new char[LINE_SIZE][TAMANHO_COLUNA];
     int shipLinePosition = 4;
     int shipColumnPosition = 2;
-    boolean movingLeft = false;
-    boolean movingRight = false;
+    boolean movendoInimigoEsquerda = false;
+    boolean movendoInimigoDireita = false;
 
     public SpaceOfGilver() {
         initMap();
@@ -24,7 +24,7 @@ public class SpaceOfGilver implements Jogo {
 
     private void initMap() {
         for (int i = 0; i < LINE_SIZE; i++) {
-            for (int j = 0; j < COLUMN_SIZE; j++) {
+            for (int j = 0; j < TAMANHO_COLUNA; j++) {
                 gameMap[i][j] = VAZIO;
             }
         }
@@ -35,7 +35,7 @@ public class SpaceOfGilver implements Jogo {
     public String tela() {
         String tela = "";
         for (int i = 0; i < LINE_SIZE; i++) {
-            for (int j = 0; j < COLUMN_SIZE; j++) {
+            for (int j = 0; j < TAMANHO_COLUNA; j++) {
                 tela += gameMap[i][j];
             }
             tela += "\n";
@@ -45,7 +45,7 @@ public class SpaceOfGilver implements Jogo {
     }
 
     public void direita() {
-        if (shipColumnPosition + 1 < COLUMN_SIZE) {
+        if (shipColumnPosition + 1 < TAMANHO_COLUNA) {
             shipColumnPosition = shipColumnPosition + 1;
             gameMap[shipLinePosition][shipColumnPosition] = NAVE;
             gameMap[shipLinePosition][shipColumnPosition - 1] = VAZIO;
@@ -81,11 +81,11 @@ public class SpaceOfGilver implements Jogo {
 
     private void moverInimigo() {
 
-        if (!movingLeft && !movingRight) {
-            movingLeft = true;
+        if (!movendoInimigoEsquerda && !movendoInimigoDireita) {
+            movendoInimigoEsquerda = true;
         }
 
-        if (movingRight) {
+        if (movendoInimigoDireita) {
             moverInimigoParaDireita();
             return;
         }
@@ -116,13 +116,13 @@ public class SpaceOfGilver implements Jogo {
             moverInimigoParaBaixo();
         }
 
-        movingLeft = false;
-        movingRight = true;
+        movendoInimigoEsquerda = false;
+        movendoInimigoDireita = true;
     }
 
     private void moverInimigoParaDireita() {
 
-        if (enemyColumnPosition + 1 < COLUMN_SIZE) {
+        if (enemyColumnPosition + 1 < TAMANHO_COLUNA) {
 
             enemyColumnPosition = enemyColumnPosition + 1;
             gameMap[enemyLinePosition][enemyColumnPosition] = ENEMY;
@@ -130,12 +130,12 @@ public class SpaceOfGilver implements Jogo {
             return;
         }
 
-        if (enemyColumnPosition == COLUMN_SIZE - 1) {
+        if (enemyColumnPosition == TAMANHO_COLUNA - 1) {
             moverInimigoParaBaixo();
         }
 
-        movingRight = false;
-        movingLeft = true;
+        movendoInimigoDireita = false;
+        movendoInimigoEsquerda = true;
     }
 
 }
