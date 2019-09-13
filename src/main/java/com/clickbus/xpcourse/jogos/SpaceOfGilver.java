@@ -80,18 +80,15 @@ public class SpaceOfGilver implements Jogo {
     public void moveEnemy(){
 
         if(!movingLeft && !movingRight){
-            moveEnemyLeft();
             movingLeft = true;
-        }
-
-        if(movingLeft){
-            moveEnemyLeft();
         }
 
         if(movingRight){
             moveEnemyRight();
+            return;
         }
 
+        moveEnemyLeft();
     }
 
     private void moveEnemyDown(){
@@ -134,8 +131,8 @@ public class SpaceOfGilver implements Jogo {
 
         }else{
             moveEnemyDown();
-            movingLeft = false;
-            movingRight = true;
+            movingLeft = true;
+            movingRight = false;
         }
     }
 
