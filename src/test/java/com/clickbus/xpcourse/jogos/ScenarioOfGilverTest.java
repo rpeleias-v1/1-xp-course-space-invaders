@@ -136,7 +136,6 @@ public class ScenarioOfGilverTest {
     }
 
     @Test
-    @Ignore
     public void testEnemyMovement() {
         String expected = "";
         expected += " V   \n";
@@ -154,7 +153,6 @@ public class ScenarioOfGilverTest {
     }
 
     @Test
-    @Ignore
     public void testEnemyShouldCollide() {
         String expected = "";
         expected += "     \n";
@@ -175,7 +173,6 @@ public class ScenarioOfGilverTest {
     }
 
     @Test
-    @Ignore
     public void testShipShouldShoot() {
 
         String expected = "";
