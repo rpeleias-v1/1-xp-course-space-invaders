@@ -137,4 +137,74 @@ public class ScenarioOfGilverTest {
         jogo.tick();
         assertEquals(expectedLater, jogo.tela());
     }
+
+    @Test
+    @Ignore
+    public void testEnemyMovement() {
+        String expected = "";
+        expected += " V   \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "  A  \n";
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        assertEquals(expected, jogo.tela());
+    }
+
+    @Test
+    @Ignore
+    public void testEnemyShouldCollide() {
+        String expected = "";
+        expected += "     \n";
+        expected += "V    \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "  A  \n";
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+        jogo.tick();
+
+        assertEquals(expected, jogo.tela());
+    }
+
+    @Test
+    @Ignore
+    public void testShipShouldShoot() {
+
+        String expected = "";
+        expected += "  |  \n";
+        expected += "  |  \n";
+        expected += "  |  \n";
+        expected += "  |  \n";
+        expected += "  A  \n";
+
+        jogo.tiro();
+        assertEquals(expected, jogo.tela());
+    }
+
+    @Test
+    @Ignore
+    public void testShootShouldDisappear() {
+
+        String expected = "";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "  A  \n";
+
+        jogo.tiro();
+        jogo.tick();
+        assertEquals(expected, jogo.tela());
+    }
 }
