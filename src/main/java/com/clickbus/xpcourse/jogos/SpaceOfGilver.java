@@ -6,6 +6,7 @@ public class SpaceOfGilver implements Jogo {
     public static final char VAZIO = ' ';
     public static final char NAVE = 'A';
     public static final char TIRO = '|';
+    public static final char MORTE_INIMIGO = 'X';
     private static int TAMANHO_LINHA = 5;
     private static int TAMANHO_COLUNA = 5;
     private int countTick = 0;
@@ -77,6 +78,8 @@ public class SpaceOfGilver implements Jogo {
         posicaoTiro = navePosicaoColuna;
 
         tickTiro = countTick;
+
+        verificaMorteInimigo();
     }
 
     public void tick() {
@@ -171,6 +174,13 @@ public class SpaceOfGilver implements Jogo {
     }
 
     private void verificaMorteInimigo(){
+
+        if (posicaoTiro == inimigoPosicaoColuna)
+
+            mapaJogo[inimigoPosicaoLinha][inimigoPosicaoColuna] = MORTE_INIMIGO;
+
+            for (int i = 0; i < inimigoPosicaoLinha; i++)
+                mapaJogo[i][posicaoTiro] = VAZIO;
 
     }
 
