@@ -176,7 +176,7 @@ public class ScenarioOfGilverTest {
     @Test
     @Ignore
     public void testEnemyShipShouldBeDestroyedInADifferentPosition() {
-        tick(5);
+        tick(10);
         jogo.tiro();
         testarTela("     ",
                 "  X  ",
