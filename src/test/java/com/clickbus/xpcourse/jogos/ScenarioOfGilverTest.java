@@ -176,4 +176,35 @@ public class ScenarioOfGilverTest {
 
         assertEquals(expected, jogo.tela());
     }
+
+    @Test
+    @Ignore
+    public void testShipShouldShoot() {
+
+        String expected = "";
+        expected += "  |  \n";
+        expected += "  |  \n";
+        expected += "  |  \n";
+        expected += "  |  \n";
+        expected += "  A  \n";
+
+        jogo.tiro();
+        assertEquals(expected, jogo.tela());
+    }
+
+    @Test
+    @Ignore
+    public void testShootShouldDisappear() {
+
+        String expected = "";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "     \n";
+        expected += "  A  \n";
+
+        jogo.tiro();
+        jogo.tick();
+        assertEquals(expected, jogo.tela());
+    }
 }
