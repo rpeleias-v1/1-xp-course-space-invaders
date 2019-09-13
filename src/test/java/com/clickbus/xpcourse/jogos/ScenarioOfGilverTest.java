@@ -202,10 +202,9 @@ public class ScenarioOfGilverTest {
     }
 
     @Test
-    @Ignore
     public void testGameOver() {
-        tick(18);
-        testarTela("Game over");
+        tick(35);
+        assertEquals("Game over", jogo.tela());
     }
 
     @Test
@@ -214,9 +213,9 @@ public class ScenarioOfGilverTest {
         tick(5);
         jogo.tiro();
         tick(1);
-        testarTela(
-                "Congratulations",
-                "All enemies has been destroyed!");
+        assertEquals(
+                "Congratulations" + "\n" +
+                "All enemies has been destroyed!", jogo.tela());
     }
 
     private void tick(int quantos)
